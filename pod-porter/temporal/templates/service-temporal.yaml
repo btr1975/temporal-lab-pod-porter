@@ -9,7 +9,7 @@ services:
      - "{{ values.service.temporal.temporal_ui }}:8080"
      - "{{ values.service.temporal.temporal_metrics }}:45965"
     volumes:
-      - "temporal-sqlite-db-{{ release.name }}:/temporal.db"
+      - "temporal-sqlite-db-{{ release.name }}:/temporal_db"
     {% if values.environment %}
     environment:
       {% for env in values.environment %}
