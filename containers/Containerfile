@@ -1,0 +1,19 @@
+FROM docker.io/library/alpine:3.23.3
+
+ARG TEMPORAL_CLI_VERSION=1.6.1
+
+COPY binaries/${TEMPORAL_CLI_VERSION}/temporal /.temporal/temporal
+
+# Copy custom secrets loader script
+COPY entry-scripts/load-secrets.sh /load-secrets.sh
+
+RUN chmod 777 /.temporal/temporal && \
+    chmod 777 /load-secrets.sh
+
+ENV PATH=/.temporal:${PATH}
+
+EXPOSE 7233
+EXPOSE 8080
+EXPOSE 45965
+
+ENTRYPOINT ["temporal", "server", "start-dev", "--db-filename", "temporal.db", "--port", "7233", "--ui-port", "8080", "--metrics-port", "45965", "--ip", "0.0.0.0"]

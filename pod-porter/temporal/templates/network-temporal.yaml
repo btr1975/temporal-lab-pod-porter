@@ -1,0 +1,5 @@
+---
+networks:
+  temporal-network-{{ release.name }}:
+    driver: "bridge"
+    name: "temporal-network-{{ release.name }}"

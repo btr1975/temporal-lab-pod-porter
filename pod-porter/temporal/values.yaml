@@ -1,0 +1,31 @@
+---
+# This is example values file for the template
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+    repository: "localhost/temporal"
+    tag: "latest"
+
+environment: [] # This section is to add environmental variable if you have none make it an empty list []
+  # - name: "MY_GITHUB_TOKEN"
+  #   value: "changeme"
+  # - name: "MY_OTHER_TOKEN"
+  #   value: "/run/secrets/some_secret_name"
+
+# One thing to note is that when using this type of secrets injection you MUST BE ON LINUX
+#
+# If defining secrets they MUST be defined in the following way
+# secrets:
+#   - name: "some_secret_name"
+#   - name: "some_secret_name_2"
+#
+# Also, using secrets this way you will just give the path to the secret
+#    Example: /run/secrets/some_secret_name
+secrets: [] # define the secrets that you want to use in the environment variables
+
+service:
+  temporal:
+    temporal_service: 7233
+    temporal_ui: 8080
+    temporal_metrics: 45965

@@ -1,0 +1,20 @@
+---
+services:
+  temporal-{{ release.name }}:
+    image: "{{ values.image.repository }}:{{ values.image.tag }}"
+    hostname: "temporal-{{ release.name }}"
+    container_name: "temporal-{{ release.name }}"
+    ports:
+     - "{{ values.service.temporal.temporal_service }}:7233"
+     - "{{ values.service.temporal.temporal_ui }}:8080"
+     - "{{ values.service.temporal.temporal_metrics }}:45965"
+    volumes:
+      - "temporal-sqlite-db-{{ release.name }}:/temporal.db"
+    {% if values.environment %}
+    environment:
+      {% for env in values.environment %}
+      {{ env.name }}: "{{ env.value }}"
+      {% endfor %}
+    {% endif %}
+    networks:
+      - "temporal-network-{{ release.name }}"

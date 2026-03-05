@@ -1,0 +1,3 @@
+---
+volumes:
+  temporal-sqlite-db-{{ release.name }}: {}
