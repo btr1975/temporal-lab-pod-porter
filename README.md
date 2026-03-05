@@ -19,6 +19,7 @@
 * Build the container using the Makefile, or make.bat file in the containers directory
 * Use pod-porter to generate the entire compose file
 * Use podman-compose or docker-compose to deploy the environment
+* [Instructions for temporal-cli binaries](./containers/binaries/README.md)
 
 ### Informational URLs
 
